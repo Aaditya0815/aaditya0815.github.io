@@ -172,15 +172,16 @@ gsap.fromTo('.mission-sub span',
 const expTrack = document.querySelector('.exp-track');
 const expPanels = gsap.utils.toArray('.exp-panel');
 
-gsap.to(expTrack, {
-  x: () => -(expTrack.scrollWidth - window.innerWidth),
+gsap.to(expPanels, {
+  xPercent: -100 * (expPanels.length - 1),
   ease: "none",
   scrollTrigger: {
     trigger: ".exp-sticky-container",
     pin: true,
-    scrub: 0.5,
+    scrub: 1.5, // Butter smooth 1.5s delay
+    invalidateOnRefresh: true,
     start: "top top",
-    end: () => "+=" + (expTrack.scrollWidth - window.innerWidth)
+    end: () => "+=" + expTrack.offsetWidth
   }
 });
 
