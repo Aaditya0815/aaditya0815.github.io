@@ -123,11 +123,17 @@ function splitText(selector, type = 'chars') {
     const text = el.innerText;
     el.innerHTML = '';
     const arr = type === 'words' ? text.split(' ') : text.split('');
-    arr.forEach(char => {
-      if(char === ' ' && type === 'chars') char = '&nbsp;';
+    arr.forEach((char, i) => {
+      if(char === ' ' && type === 'chars') {
+        el.appendChild(document.createTextNode(' '));
+        return;
+      }
       const span = document.createElement('span');
-      span.innerHTML = char === ' ' && type === 'words' ? '&nbsp;' : (char + (type==='words'?' ':''));
+      span.innerHTML = char;
       el.appendChild(span);
+      if (type === 'words' && i < arr.length - 1) {
+        el.appendChild(document.createTextNode(' '));
+      }
     });
   });
 }
@@ -140,14 +146,14 @@ splitText('.split-word', 'words');
 const tl = gsap.timeline();
 tl.fromTo('.hero-eyebrow span', {y: 20, opacity: 0}, {y: 0, opacity: 1, duration: 0.8, stagger: 0.02, ease: 'power3.out', delay: 0.5})
   .fromTo('.hero-title span', {y: 100, opacity: 0}, {y: 0, opacity: 1, duration: 1, stagger: 0.04, ease: 'expo.out'}, "-=0.6")
-  .fromTo('.hero-stats span', {y: 20, opacity: 0}, {y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: 'power3.out'}, "-=0.8")
+  .fromTo('.hero-stats span', {y: 20, opacity: 0}, {y: 0, opacity: 1, duration: 0.8, stagger: 0.03, ease: 'power3.out'}, "-=0.8")
   .fromTo('.scroll-prompt', {opacity: 0}, {opacity: 1, duration: 1}, "-=0.5");
 
 // Mission Text Scroll Reveal
 gsap.fromTo('.mission .massive-text span', 
   { y: 150, opacity: 0 },
   {
-    y: 0, opacity: 1, stagger: 0.1, duration: 1, ease: 'expo.out',
+    y: 0, opacity: 1, stagger: 0.05, duration: 1, ease: 'expo.out',
     scrollTrigger: {
       trigger: '.mission',
       start: 'top 60%',
@@ -167,15 +173,14 @@ const expTrack = document.querySelector('.exp-track');
 const expPanels = gsap.utils.toArray('.exp-panel');
 
 gsap.to(expTrack, {
-  xPercent: -100 * (expPanels.length - 1),
+  x: () => -(expTrack.scrollWidth - window.innerWidth),
   ease: "none",
   scrollTrigger: {
     trigger: ".exp-sticky-container",
     pin: true,
-    scrub: 1,
-    snap: 1 / (expPanels.length - 1),
+    scrub: 0.5,
     start: "top top",
-    end: () => "+=" + expTrack.offsetWidth
+    end: () => "+=" + (expTrack.scrollWidth - window.innerWidth)
   }
 });
 
