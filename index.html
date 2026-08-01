@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aaditya Sabharwal — Robotics & AI Engineer</title>
-  <meta name="description" content="Portfolio of Aaditya Sabharwal — Robotics & AI Engineer at TIET. C++, ROS2, Jetson, TensorRT, Computer Vision." />
+  <meta name="description" content="Portfolio of Aaditya Sabharwal — Robotics & AI Engineer at TIET. GPS-denied navigation, computer vision, embedded systems." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -15,7 +15,10 @@
   <!-- NAV -->
   <nav id="navbar">
     <div class="nav-inner">
-      <a href="#hero" class="nav-logo">AS<span class="dot">.</span></a>
+      <a href="#hero" class="nav-logo">
+        <span class="nav-logo-mark">A·S</span>
+        <span class="nav-logo-tag">RAI · TIET</span>
+      </a>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
@@ -30,24 +33,30 @@
 
   <!-- HERO -->
   <section id="hero">
-    <canvas id="particle-canvas"></canvas>
     <div class="hero-content">
-      <p class="hero-greeting">Hey there, I'm</p>
+      <p class="hero-greeting">Robotics &amp; AI · Patiala, India</p>
       <h1 class="hero-name">Aaditya <span class="accent">Sabharwal</span></h1>
       <div class="hero-subtitle">
         <span id="typed-text"></span><span class="cursor-blink">|</span>
       </div>
       <p class="hero-desc">
-        B.E. Robotics & AI @ TIET · R&D Intern @ IoTechWorld Avigation<br/>
-        Building systems that fly, track, and think — in C++ and ROS2.
+        B.E. Robotics &amp; AI at TIET, currently R&amp;D interning at IoTechWorld Avigation on GPS-denied navigation for a defense drone program. I write C++ first, Python second, and I'd rather ship something honest than something impressive.
       </p>
       <div class="hero-buttons">
-        <a href="#projects" class="btn-primary">View Projects</a>
-        <a href="https://github.com/Aaditya0815" target="_blank" class="btn-secondary">GitHub ↗</a>
+        <a href="#projects" class="btn-primary">View Projects →</a>
+        <a href="https://github.com/Aaditya0815" target="_blank" rel="noopener" class="btn-secondary">GitHub ↗</a>
+      </div>
+      <div class="telemetry-strip">
+        <div class="telemetry-readouts">
+          <div class="readout"><span class="readout-val">7.77</span><span class="readout-label">CGPA</span></div>
+          <div class="readout"><span class="readout-val">SEM 05</span><span class="readout-label">Current</span></div>
+          <div class="readout"><span class="readout-val">25.7</span><span class="readout-label">FPS · Jetson Nano</span></div>
+          <div class="readout"><span class="readout-val">11</span><span class="readout-label">Shipped Projects</span></div>
+        </div>
       </div>
     </div>
     <div class="hero-scroll-indicator">
-      <span>scroll</span>
+      <span>Scroll</span>
       <div class="scroll-line"></div>
     </div>
   </section>
@@ -55,43 +64,44 @@
   <!-- ABOUT -->
   <section id="about" class="section">
     <div class="container">
-      <h2 class="section-title">About <span class="accent">Me</span></h2>
+      <span class="eyebrow">About</span>
+      <h2 class="section-title">Systems that fly, track, and hold up under questioning.</h2>
       <div class="about-grid">
         <div class="about-text">
-          <p>I'm a second-year Robotics & AI student at <strong>Thapar Institute of Engineering & Technology (TIET), Patiala</strong>, with a minor in Computer Science. I specialize in the full stack of autonomous systems — from physical PCB design and SolidWorks CAD, all the way up to TensorRT inference pipelines on edge hardware.</p>
-          <p>My current internship at <strong>IoTechWorld Avigation</strong> has me building real-time object detection and tracking on NVIDIA Jetson hardware for India's Defense Swarm Drone Program. Before that, I designed and fabricated a modular surveillance robot at TIET's Experiential Learning Centre.</p>
-          <p>I write <strong>C++ first, Python second</strong>. I care about systems that are fast, defensible, and honest — both in engineering and on a resume.</p>
-          <div class="about-stats">
-            <div class="stat"><span class="stat-num">7.77</span><span class="stat-label">CGPA / 10</span></div>
-            <div class="stat"><span class="stat-num">6+</span><span class="stat-label">Projects</span></div>
-            <div class="stat"><span class="stat-num">2</span><span class="stat-label">Internships</span></div>
-            <div class="stat"><span class="stat-num">25.7</span><span class="stat-label">FPS on Nano</span></div>
+          <p>I'm a third-year Robotics &amp; AI student at <strong>Thapar Institute of Engineering &amp; Technology (TIET), Patiala</strong>, with a minor in Computer Science. I work across the full stack of autonomous systems — from hand-soldered PCBs and SolidWorks CAD up to TensorRT inference pipelines running on edge hardware.</p>
+          <p>My current internship at <strong>IoTechWorld Avigation</strong> has me building real-time object detection and tracking on NVIDIA Jetson hardware for India's Defense Swarm Drone Program, after an original GPS-denied navigation assignment ran into a hardware wall. Before that, I designed and fabricated a modular surveillance robot at TIET's Experiential Learning Centre.</p>
+          <p>I'm also Class Representative for my ~90-student RAI batch. I write <strong>C++ first, Python second</strong>, and I care more about a system being defensible in an interview than impressive on a slide.</p>
+          <div class="about-readouts">
+            <div class="about-readout"><span class="num">7.77</span><span class="lbl">CGPA / 10</span></div>
+            <div class="about-readout"><span class="num">11</span><span class="lbl">Projects</span></div>
+            <div class="about-readout"><span class="num">2</span><span class="lbl">Internships</span></div>
+            <div class="about-readout"><span class="num">2028</span><span class="lbl">Graduating</span></div>
           </div>
         </div>
         <div class="about-card-stack">
           <div class="info-card">
-            <div class="info-card-icon">🎓</div>
+            <span class="info-card-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M4 4.5C4 4.5 7 3.5 10 4.5V18.5C7 17.5 4 18.5 4 18.5V4.5Z"/><path d="M20 4.5C20 4.5 17 3.5 14 4.5V18.5C17 17.5 20 18.5 20 18.5V4.5Z"/></svg></span>
             <div>
-              <p class="info-card-title">B.E. Robotics & AI</p>
+              <p class="info-card-title">B.E. Robotics &amp; AI</p>
               <p class="info-card-sub">TIET Patiala · 2024–2028</p>
             </div>
           </div>
           <div class="info-card">
-            <div class="info-card-icon">🛩️</div>
+            <span class="info-card-icon"><svg class="icon" viewBox="0 0 24 24"><circle cx="5.5" cy="5.5" r="1.8"/><circle cx="18.5" cy="5.5" r="1.8"/><circle cx="5.5" cy="18.5" r="1.8"/><circle cx="18.5" cy="18.5" r="1.8"/><path d="M7 7L9.7 9.7M17 7L14.3 9.7M7 17L9.7 14.3M17 17L14.3 14.3"/><rect x="9.7" y="9.7" width="4.6" height="4.6" rx="0.8"/></svg></span>
             <div>
-              <p class="info-card-title">R&D Intern</p>
+              <p class="info-card-title">R&amp;D Intern</p>
               <p class="info-card-sub">IoTechWorld Avigation, Gurugram</p>
             </div>
           </div>
           <div class="info-card">
-            <div class="info-card-icon">📍</div>
+            <span class="info-card-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M12 21C12 21 19 14.5 19 9.5C19 5.9 15.9 3 12 3C8.1 3 5 5.9 5 9.5C5 14.5 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.2"/></svg></span>
             <div>
               <p class="info-card-title">New Delhi, India</p>
-              <p class="info-card-sub">Open to remote & relocation</p>
+              <p class="info-card-sub">Open to remote &amp; relocation</p>
             </div>
           </div>
           <div class="info-card">
-            <div class="info-card-icon">🥇</div>
+            <span class="info-card-icon"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5.2"/><path d="M9 13.5L7.5 21L12 18.3L16.5 21L15 13.5"/></svg></span>
             <div>
               <p class="info-card-title">Best Project Award</p>
               <p class="info-card-sub">Orangewood Robotics ROS2 Workshop, 2026</p>
@@ -105,7 +115,8 @@
   <!-- EXPERIENCE -->
   <section id="experience" class="section section-dark">
     <div class="container">
-      <h2 class="section-title">Work <span class="accent">Experience</span></h2>
+      <span class="eyebrow">Experience</span>
+      <h2 class="section-title">Work Experience</h2>
       <div class="timeline">
 
         <div class="timeline-item" data-aos>
@@ -113,7 +124,7 @@
           <div class="timeline-content">
             <div class="timeline-header">
               <div>
-                <h3>R&D Engineering Intern</h3>
+                <h3>R&amp;D Engineering Intern</h3>
                 <p class="timeline-org">IoTechWorld Avigation · Gurugram, India</p>
               </div>
               <span class="timeline-date">Mid 2026 · Present</span>
@@ -122,8 +133,8 @@
             <ul>
               <li>Built a YOLOv8n TensorRT FP16 inference engine on Jetson Nano 4GB, achieving <strong>25.7 FPS (GUI) / 40.3 FPS (headless)</strong>.</li>
               <li>Replaced naive NumPy preprocessing with ARM NEON SIMD in-place multiply — <strong>4.5× speedup</strong>.</li>
-              <li>Implemented 8-state SORT Kalman Filter tracker with Hungarian assignment for multi-object tracking.</li>
-              <li>Migrating pipeline to Jetson AGX Orin with zero-copy NVMM GStreamer buffers and DeepSORT re-ID.</li>
+              <li>Implemented an 8-state SORT Kalman filter tracker with Hungarian assignment for multi-object tracking.</li>
+              <li>Migrating the pipeline to Jetson AGX Orin with zero-copy NVMM GStreamer buffers and DeepSORT re-identification.</li>
             </ul>
             <div class="timeline-tags">
               <span>C++17</span><span>TensorRT</span><span>YOLOv8</span><span>Jetson Nano</span><span>GStreamer</span><span>ROS1</span><span>MAVLink</span>
@@ -136,12 +147,12 @@
           <div class="timeline-content">
             <div class="timeline-header">
               <div>
-                <h3>Mechanical & Robotics Intern</h3>
+                <h3>Mechanical &amp; Robotics Intern</h3>
                 <p class="timeline-org">Experiential Learning Centre (ELC) · TIET, Patiala</p>
               </div>
               <span class="timeline-date">Jun – Jul 2025 · 6 Weeks</span>
             </div>
-            <p>Designed and fabricated a Modular Reconfigurable Surveillance Robot under Dr. Ashish Singla & Dr. R.K. Duvedi.</p>
+            <p>Designed and fabricated a Modular Reconfigurable Surveillance Robot under Dr. Ashish Singla &amp; Dr. R.K. Duvedi.</p>
             <ul>
               <li>Led complete SolidWorks CAD for chassis and structural assembly, including FEA stress analysis (FoS ≈ 1.8).</li>
               <li>Hand-soldered 3 PCBs (IR Receiver, IR Sensor Module, PWM Transmitter) for the drive system.</li>
@@ -160,71 +171,155 @@
   <!-- PROJECTS -->
   <section id="projects" class="section">
     <div class="container">
-      <h2 class="section-title">Featured <span class="accent">Projects</span></h2>
+      <span class="eyebrow">Selected Work</span>
+      <h2 class="section-title">Flagship Projects</h2>
+
+      <div class="flagship-list">
+
+        <div class="flagship" data-aos>
+          <div>
+            <p class="flagship-num">01 / Defense R&amp;D</p>
+            <h3 class="flagship-title">GPS-Denied Navigation → Object Tracking</h3>
+            <p class="flagship-tagline">IoTechWorld Avigation — Defense Swarm Drone Program</p>
+            <div class="flagship-stats">
+              <div class="flagship-stat"><span class="v">25.7 / 40.3 FPS</span><span class="k">GUI / headless on Jetson Nano</span></div>
+              <div class="flagship-stat"><span class="v">4.5×</span><span class="k">preprocessing speedup via ARM NEON SIMD</span></div>
+              <div class="flagship-stat"><span class="v">8-state Kalman</span><span class="k">SORT tracker, Hungarian assignment</span></div>
+            </div>
+          </div>
+          <div class="flagship-body">
+            <p>Originally assigned to build GPS-denied Visual Inertial Odometry for autonomous return-to-home on a CUAV X7+ flight controller. Designed a closed-loop hardware trigger architecture to remove time-delay from the VIO state vector, and specified <strong>sqrtVINS</strong> over standard MSCKF so the covariance estimate wouldn't corrupt under the Jetson's 32-bit float precision.</p>
+            <p>The target camera turned out to lack an exposed hardware STROBE pin — a constraint no software fix could route around. Pivoted the assignment to real-time object detection and tracking: shipped a YOLOv8n TensorRT engine on Jetson Nano, hand-optimized the preprocessing pipeline with ARM NEON SIMD, and built the multi-object tracker on top.</p>
+          </div>
+        </div>
+
+        <div class="flagship" data-aos>
+          <div>
+            <p class="flagship-num">02 / Data Science</p>
+            <h3 class="flagship-title">Autonomous Vehicle Braking Variability</h3>
+            <p class="flagship-tagline">URA 401, with Akshaj Arora</p>
+            <div class="flagship-stats">
+              <div class="flagship-stat"><span class="v">AUC 0.85</span><span class="k">across 40,000+ CAN-bus samples</span></div>
+              <div class="flagship-stat"><span class="v">F1 0.35</span><span class="k">Isolation Forest, best of 3 methods</span></div>
+              <div class="flagship-stat"><span class="v">90% faster</span><span class="k">automated 14-slide report generation</span></div>
+            </div>
+          </div>
+          <div class="flagship-body">
+            <p>Analyzed 40,000+ synthetic CAN-bus telemetry samples modeled on nuScenes specs across 50 driving scenarios, looking for anomalous braking behavior — the same unsupervised signal-extraction problem that shows up in transaction-level fraud detection.</p>
+            <p>Combined PELT and CUSUM change-point detection with Isolation Forest, LOF, and Z-Score anomaly scoring. Isolation Forest led on F1, but the AUC tells the real story: the model ranks true anomalies above normal points 85% of the time. Also built an automated report generator (<code>python-pptx</code>) that cut manual reporting time by 90%.</p>
+          </div>
+        </div>
+
+        <div class="flagship" data-aos>
+          <div>
+            <p class="flagship-num">03 / Competitive C++</p>
+            <h3 class="flagship-title">NFZ-Aware Drone Routing Engine</h3>
+            <p class="flagship-tagline">Goldman Sachs India Hackathon 2026 — 12hr solo contest</p>
+            <div class="flagship-stats">
+              <div class="flagship-stat"><span class="v">C++17</span><span class="k">STL, jsoncpp, computational geometry</span></div>
+              <div class="flagship-stat"><span class="v">2 NFZ types</span><span class="k">circle projection + Liang-Barsky rect clipping</span></div>
+              <div class="flagship-stat"><span class="v">Multi-trip</span><span class="k">greedy charging + retry scheduling</span></div>
+            </div>
+          </div>
+          <div class="flagship-body">
+            <p>Built a delivery-routing engine under a 12-hour clock: circle no-fly-zones solved via projection-based closest-point geometry, rectangle NFZs via Liang-Barsky per-axis slab clipping, and a deadline-weighted nearest-neighbor scheduler for ordering deliveries.</p>
+            <p>Iterated the score up from a 34/100 baseline through algorithmic upgrades — progressive bundle-size fallback, mid-route charging via greedy nearest-station selection, and a multi-trip retry loop for deliveries that didn't fit the first pass.</p>
+          </div>
+        </div>
+
+        <div class="flagship" data-aos>
+          <div>
+            <p class="flagship-num">04 / Robotics · ROS2</p>
+            <h3 class="flagship-title">Gesture-Controlled Robotic Arm</h3>
+            <p class="flagship-tagline">Orangewood Robotics — RAI Workshop 2026 · Best Project</p>
+            <div class="flagship-stats">
+              <div class="flagship-stat"><span class="v">8-pass IK</span><span class="k">iterative geometric solver + FK correction</span></div>
+              <div class="flagship-stat"><span class="v">1€ filter</span><span class="k">+ joint-level EMA for jitter removal</span></div>
+              <div class="flagship-stat"><span class="v">UDP control</span><span class="k">low-latency link to the controller</span></div>
+            </div>
+          </div>
+          <div class="flagship-body">
+            <p>Built a real-time gesture-controlled UR5e arm simulation in ROS2 — MediaPipe hand tracking (21 landmarks) driving an 8-pass iterative inverse-kinematics solver, with a 1€ adaptive filter and joint-level EMA to kill jitter without adding perceptible input lag.</p>
+            <p>Added a hysteresis-based mode lock so the arm doesn't flip between TELEOP, AUTO, and STOP on a single ambiguous frame. Recognized as Best Project among all workshop participants.</p>
+            <div class="flagship-links">
+              <a href="https://github.com/Aaditya0815/gesture-arm-ros2" target="_blank" rel="noopener">Source →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="subsection-label">More Work</p>
       <div class="projects-grid">
 
         <div class="project-card" data-aos>
           <div class="project-header">
-            <span class="project-badge badge-blue">🚁 Robotics</span>
-            <a href="https://github.com/Aaditya0815/gesture-arm-ros2" target="_blank" class="project-link">↗</a>
+            <span class="project-type">Software · C++</span>
           </div>
-          <h3>Gesture-Controlled Robotic Arm</h3>
-          <p>Real-time gesture control of a UR5e industrial arm via ROS2. Hand-pose tracking (MediaPipe 21 landmarks) drives an 8-pass iterative IK solver. Features 1€ adaptive jitter filter and hysteresis mode-locking.</p>
-          <div class="project-highlight">🥇 Best Project · Orangewood Robotics ROS2 Workshop 2026</div>
-          <div class="project-tags"><span>ROS2</span><span>Python</span><span>MediaPipe</span><span>OpenCV</span><span>IK Solver</span></div>
-        </div>
-
-        <div class="project-card featured-card" data-aos>
-          <div class="project-header">
-            <span class="project-badge badge-orange">🛩️ Aerospace</span>
-            <a href="https://github.com/Aaditya0815/drone-routing-engine" target="_blank" class="project-link">↗</a>
-          </div>
-          <h3>Drone Routing Engine</h3>
-          <p>C++17 routing engine for drone delivery in restricted airspace. Implements Liang-Barsky slab clipping for rectangular NFZs, closest-point projection for cylindrical NFZs, and deadline-weighted greedy scheduling.</p>
-          <div class="project-highlight">⚡ Goldman Sachs India Engineering Hackathon 2026</div>
-          <div class="project-tags"><span>C++17</span><span>Computational Geometry</span><span>Greedy Algorithms</span></div>
+          <h3>Food Court Waiting Time Optimizer</h3>
+          <p>Terminal-based food court simulator. Greedy minimum-wait load balancing across stalls using <code>std::queue</code>. 229 lines, hand-written, live-demonstrated to faculty.</p>
+          <div class="project-highlight">Live-demoed · fully hand-written</div>
+          <div class="project-tags"><span>C++</span><span>STL</span><span>Greedy</span></div>
         </div>
 
         <div class="project-card" data-aos>
           <div class="project-header">
-            <span class="project-badge badge-green">📊 Data Science</span>
-            <a href="https://github.com/Aaditya0815/Autonomous-Vehicle-Braking-Analysis" target="_blank" class="project-link">↗</a>
-          </div>
-          <h3>AV Braking Variability Analysis</h3>
-          <p>Anomaly detection on 40,000+ synthetic CAN bus telemetry points using PELT & CUSUM change-point detection and Isolation Forest scoring. AUC = 0.8473. Includes automated 14-slide PPT generator.</p>
-          <div class="project-highlight">📈 AUC 0.8473 · 40K+ data points</div>
-          <div class="project-tags"><span>Python</span><span>scikit-learn</span><span>PELT</span><span>Isolation Forest</span></div>
-        </div>
-
-        <div class="project-card" data-aos>
-          <div class="project-header">
-            <span class="project-badge badge-purple">💻 DSA</span>
-            <a href="https://github.com/Aaditya0815/food-court-optimizer" target="_blank" class="project-link">↗</a>
-          </div>
-          <h3>Food Court Queue Optimizer</h3>
-          <p>Terminal-based C++ food court management simulator. Greedy minimum-wait load balancing across stalls using std::queue. 229 lines of hand-written C++, live-demonstrated to professor.</p>
-          <div class="project-highlight">✅ Live-demoed · 100% manually written</div>
-          <div class="project-tags"><span>C++</span><span>STL</span><span>Greedy Algorithm</span><span>std::queue</span></div>
-        </div>
-
-        <div class="project-card" data-aos>
-          <div class="project-header">
-            <span class="project-badge badge-blue">⚙️ Hardware</span>
+            <span class="project-type">Hardware</span>
           </div>
           <h3>EDP Line-Following Robot</h3>
-          <p>Autonomous line-follower built from scratch. Designed and hand-soldered 3 custom PCBs (IR Receiver, IR Sensor Module, PWM Transmitter) in Eagle CAD. Robot ran on a physical black-line track.</p>
-          <div class="project-highlight">🔧 3 hand-soldered PCBs · Physically built & ran</div>
-          <div class="project-tags"><span>Eagle CAD</span><span>ATtiny85</span><span>NE555</span><span>LM358P</span><span>C++</span></div>
+          <p>Autonomous line-follower built from scratch — 3 custom PCBs (IR receiver, IR sensor, PWM transmitter) designed in Eagle CAD, hand-soldered, tested on a DSO, and run on a physical track.</p>
+          <div class="project-highlight">3 hand-soldered PCBs · physically built</div>
+          <div class="project-tags"><span>Eagle CAD</span><span>ATtiny85</span><span>NE555</span></div>
         </div>
 
         <div class="project-card" data-aos>
           <div class="project-header">
-            <span class="project-badge badge-green">🌐 Full Stack</span>
+            <span class="project-type">Full Stack</span>
           </div>
           <h3>ApplyOS — Internship Automation</h3>
-          <p>Full-stack platform that automates internship sourcing, cold-email generation, and application tracking. Scrapes leads via Apollo.io, generates personalized emails via Claude API, and tracks status in SQLite.</p>
-          <div class="project-highlight">🤖 Claude API · Puppeteer · Gmail API</div>
-          <div class="project-tags"><span>React</span><span>Express</span><span>SQLite</span><span>Claude API</span><span>Puppeteer</span></div>
+          <p>Platform that automates internship sourcing, cold-email generation, and application tracking — Apollo.io scraping, Claude API for outreach, Gmail API for sending, SQLite for state.</p>
+          <div class="project-highlight">Claude API · Puppeteer · Gmail API</div>
+          <div class="project-tags"><span>React</span><span>Express</span><span>SQLite</span></div>
+        </div>
+
+        <div class="project-card" data-aos>
+          <div class="project-header">
+            <span class="project-type">Hardware · Mechanical</span>
+          </div>
+          <h3>Truss Bridge &amp; Quick Return Mechanism</h3>
+          <p>Two physically fabricated builds: a 300mm wood-and-wire truss bridge tested to failure, and a wooden quick-return mechanism converting rotary motion to reciprocating linear motion.</p>
+          <div class="project-highlight">80kg load tested · hand-calculated forces</div>
+          <div class="project-tags"><span>Statics</span><span>Mechanism Design</span></div>
+        </div>
+
+        <div class="project-card" data-aos>
+          <div class="project-header">
+            <span class="project-type">Software · ML</span>
+          </div>
+          <h3>Malaria Detection CNN</h3>
+          <p>CNN classifier for red blood cell microscopy images, with Grad-CAM used for interpretability of the classification decisions.</p>
+          <div class="project-highlight">~86% classification accuracy</div>
+          <div class="project-tags"><span>TensorFlow</span><span>Keras</span><span>Grad-CAM</span></div>
+        </div>
+
+        <div class="project-card" data-aos>
+          <div class="project-header">
+            <span class="project-type">Full Stack</span>
+          </div>
+          <h3>FAPS Official Website</h3>
+          <p>Official site for TIET's Fine Arts &amp; Photography Society, built and shipped ahead of the Kaleidoscope event.</p>
+          <div class="project-highlight">Live · React + TypeScript</div>
+          <div class="project-tags"><span>React</span><span>TypeScript</span><span>Vite</span></div>
+        </div>
+
+        <div class="project-card" data-aos>
+          <div class="project-header">
+            <span class="project-type">Software · SIH 2025</span>
+          </div>
+          <h3>Farmwear — Agri-Insight Platform</h3>
+          <p>Architected a farmer-advisory platform combining satellite NDVI/NDMI crop health indices, a fine-tuned Llama 2 chatbot, and crowdsourced locust-swarm tracking.</p>
+          <div class="project-highlight">System architecture &amp; integration design</div>
+          <div class="project-tags"><span>FastAPI</span><span>PyTorch</span><span>Llama 2</span></div>
         </div>
 
       </div>
@@ -234,7 +329,8 @@
   <!-- SKILLS -->
   <section id="skills" class="section section-dark">
     <div class="container">
-      <h2 class="section-title">Technical <span class="accent">Skills</span></h2>
+      <span class="eyebrow">Toolset</span>
+      <h2 class="section-title">Technical Skills</h2>
       <div class="skills-grid">
         <div class="skill-group">
           <h3 class="skill-group-title">Languages</h3>
@@ -248,9 +344,9 @@
           </div>
         </div>
         <div class="skill-group">
-          <h3 class="skill-group-title">Robotics & Systems</h3>
+          <h3 class="skill-group-title">Robotics &amp; Systems</h3>
           <div class="skill-pills">
-            <span class="pill pill-primary">ROS2 Humble</span>
+            <span class="pill pill-primary">ROS2</span>
             <span class="pill pill-primary">ROS1 Melodic</span>
             <span class="pill">MAVLink / MAVROS</span>
             <span class="pill">ArduPilot EKF3</span>
@@ -271,7 +367,7 @@
           </div>
         </div>
         <div class="skill-group">
-          <h3 class="skill-group-title">Hardware & CAD</h3>
+          <h3 class="skill-group-title">Hardware &amp; CAD</h3>
           <div class="skill-pills">
             <span class="pill pill-primary">NVIDIA Jetson Nano/Orin</span>
             <span class="pill">SolidWorks (FEA)</span>
@@ -282,7 +378,7 @@
           </div>
         </div>
         <div class="skill-group">
-          <h3 class="skill-group-title">Web & Backend</h3>
+          <h3 class="skill-group-title">Web &amp; Backend</h3>
           <div class="skill-pills">
             <span class="pill">React</span>
             <span class="pill">Express.js</span>
@@ -309,37 +405,38 @@
   <!-- ACHIEVEMENTS -->
   <section id="achievements" class="section">
     <div class="container">
-      <h2 class="section-title">Achievements & <span class="accent">Leadership</span></h2>
+      <span class="eyebrow">Record</span>
+      <h2 class="section-title">Achievements &amp; Leadership</h2>
       <div class="achievements-grid">
         <div class="achievement-card" data-aos>
-          <div class="ach-icon">🥇</div>
+          <span class="ach-label">Award</span>
           <h3>Best Project Award</h3>
           <p>Orangewood Robotics ROS2 Workshop 2026 — Gesture-Controlled UR5e Arm selected as best project among all participants.</p>
         </div>
         <div class="achievement-card" data-aos>
-          <div class="ach-icon">⚡</div>
+          <span class="ach-label">Hackathon</span>
           <h3>Goldman Sachs Hackathon</h3>
-          <p>Competed in Goldman Sachs India Engineering Hackathon 2026, building a C++17 NFZ-aware drone routing engine in 12 hours.</p>
+          <p>Competed in the Goldman Sachs India Engineering Hackathon 2026, building a C++17 NFZ-aware drone routing engine in 12 hours.</p>
         </div>
         <div class="achievement-card" data-aos>
-          <div class="ach-icon">🎖️</div>
+          <span class="ach-label">NCC</span>
           <h3>NCC Senior Cadet</h3>
           <p>Selected marcher for the Republic Day Parade 2026 at Polo Ground, Patiala — reviewed by the Chief Minister of Punjab.</p>
         </div>
         <div class="achievement-card" data-aos>
-          <div class="ach-icon">🏛️</div>
+          <span class="ach-label">Leadership</span>
           <h3>Class Representative</h3>
-          <p>Student-faculty liaison for the full B.E. RAI batch (~300 students) at TIET since August 2024.</p>
+          <p>Student-faculty liaison for the full B.E. RAI batch (~90 students) at TIET since August 2024.</p>
         </div>
         <div class="achievement-card" data-aos>
-          <div class="ach-icon">🔬</div>
+          <span class="ach-label">Workshop</span>
           <h3>IIT Ropar — SERB Workshop</h3>
           <p>"Practicing Robotics: Reconfigurable Robots" — SERB (ANRF) funded national workshop, Project CGR/2021/4431, March 2025.</p>
         </div>
         <div class="achievement-card" data-aos>
-          <div class="ach-icon">🚁</div>
+          <span class="ach-label">Workshop</span>
           <h3>Drone Technology Bootcamp</h3>
-          <p>CSED TIET × NIT Jalandhar, sponsored by SwaYaan/MeitY (Govt. of India). Assembly, programming & flight operations.</p>
+          <p>CSED TIET × NIT Jalandhar, sponsored by SwaYaan/MeitY (Govt. of India). Assembly, programming &amp; flight operations.</p>
         </div>
       </div>
     </div>
@@ -348,12 +445,13 @@
   <!-- CONTACT -->
   <section id="contact" class="section section-dark">
     <div class="container contact-container">
-      <h2 class="section-title">Get In <span class="accent">Touch</span></h2>
+      <span class="eyebrow" style="text-align:center;">Get In Touch</span>
+      <h2 class="section-title" style="max-width:none;">Let's talk.</h2>
       <p class="contact-desc">I'm currently open to internship opportunities in robotics, embedded systems, and computer vision. My inbox is always open.</p>
       <a href="mailto:aadicolumban@gmail.com" class="btn-primary btn-large">Say Hello →</a>
       <div class="social-links">
-        <a href="https://github.com/Aaditya0815" target="_blank">GitHub</a>
-        <a href="https://linkedin.com/in/aaditya-sabharwal-128a7322a" target="_blank">LinkedIn</a>
+        <a href="https://github.com/Aaditya0815" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/aaditya-sabharwal-128a7322a" target="_blank" rel="noopener">LinkedIn</a>
         <a href="mailto:aadicolumban@gmail.com">Email</a>
       </div>
     </div>
@@ -361,8 +459,8 @@
 
   <!-- FOOTER -->
   <footer>
-    <p>Designed & Built by <span class="accent">Aaditya Sabharwal</span> · 2026</p>
-    <p class="footer-sub">B.E. Robotics & AI · TIET Patiala</p>
+    <p>Designed &amp; Built by <span class="accent" style="font-style:normal;">Aaditya Sabharwal</span> · 2026</p>
+    <p class="footer-sub">B.E. Robotics &amp; AI · TIET Patiala</p>
   </footer>
 
   <script src="script.js"></script>
