@@ -1,168 +1,202 @@
-/* === PARTICLE CONSTELLATION — Canvas 2D === */
-(function(){
-  const canvas = document.getElementById('hero-canvas');
-  if(!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let w, h, particles = [], mouse = {x: null, y: null};
-  const PARTICLE_COUNT = 120;
-  const CONNECT_DIST = 140;
-  const ACCENT = {r:212,g:168,b:85};
+/* === CUSTOM CURSOR === */
+const cursor = document.getElementById('cursor');
+const follower = document.getElementById('cursor-follower');
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
+let followerX = mouseX;
+let followerY = mouseY;
 
-  function resize(){
-    w = canvas.width = canvas.parentElement.offsetWidth;
-    h = canvas.height = canvas.parentElement.offsetHeight;
-  }
-  window.addEventListener('resize', resize);
-  resize();
-
-  class Particle {
-    constructor(){
-      this.x = Math.random()*w;
-      this.y = Math.random()*h;
-      this.vx = (Math.random()-.5)*.35;
-      this.vy = (Math.random()-.5)*.35;
-      this.r = Math.random()*1.8+.5;
-    }
-    update(){
-      this.x += this.vx;
-      this.y += this.vy;
-      if(this.x<0||this.x>w) this.vx*=-1;
-      if(this.y<0||this.y>h) this.vy*=-1;
-      if(mouse.x!==null){
-        const dx=this.x-mouse.x, dy=this.y-mouse.y;
-        const dist=Math.sqrt(dx*dx+dy*dy);
-        if(dist<120){
-          const force=.015*(120-dist)/120;
-          this.vx+=dx*force;
-          this.vy+=dy*force;
-        }
-      }
-      this.vx*=.99; this.vy*=.99;
-    }
-    draw(){
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.r, 0, Math.PI*2);
-      ctx.fillStyle=`rgba(${ACCENT.r},${ACCENT.g},${ACCENT.b},0.5)`;
-      ctx.fill();
-    }
-  }
-
-  for(let i=0;i<PARTICLE_COUNT;i++) particles.push(new Particle());
-
-  canvas.addEventListener('mousemove', e=>{
-    const rect=canvas.getBoundingClientRect();
-    mouse.x=e.clientX-rect.left;
-    mouse.y=e.clientY-rect.top;
-  });
-  canvas.addEventListener('mouseleave', ()=>{mouse.x=null;mouse.y=null;});
-
-  function animate(){
-    ctx.clearRect(0,0,w,h);
-    for(let i=0;i<particles.length;i++){
-      particles[i].update();
-      particles[i].draw();
-      for(let j=i+1;j<particles.length;j++){
-        const dx=particles[i].x-particles[j].x;
-        const dy=particles[i].y-particles[j].y;
-        const dist=Math.sqrt(dx*dx+dy*dy);
-        if(dist<CONNECT_DIST){
-          const alpha=.12*(1-dist/CONNECT_DIST);
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle=`rgba(${ACCENT.r},${ACCENT.g},${ACCENT.b},${alpha})`;
-          ctx.lineWidth=.5;
-          ctx.stroke();
-        }
-      }
-    }
-    requestAnimationFrame(animate);
-  }
-  animate();
-})();
-
-/* === TYPED TEXT === */
-const phrases=['Robotics & AI Engineer','C++17 Systems Developer','Computer Vision · TensorRT','ROS2 · Jetson · ArduPilot','Building things that fly & think.'];
-let phraseIdx=0, charIdx=0, deleting=false;
-const typedEl=document.getElementById('typed-text');
-function typeLoop(){
-  const cur=phrases[phraseIdx];
-  if(deleting){
-    typedEl.textContent=cur.substring(0,charIdx--);
-    if(charIdx<0){deleting=false;phraseIdx=(phraseIdx+1)%phrases.length;setTimeout(typeLoop,400);return;}
-    setTimeout(typeLoop,35);
-  } else {
-    typedEl.textContent=cur.substring(0,charIdx++);
-    if(charIdx>cur.length){deleting=true;setTimeout(typeLoop,2200);return;}
-    setTimeout(typeLoop,60);
-  }
-}
-setTimeout(typeLoop,800);
-
-/* === SCROLL PROGRESS BAR === */
-const progressBar=document.getElementById('scroll-progress');
-window.addEventListener('scroll',()=>{
-  const scrollTop=document.documentElement.scrollTop;
-  const docHeight=document.documentElement.scrollHeight-document.documentElement.clientHeight;
-  const pct=(scrollTop/docHeight)*100;
-  if(progressBar) progressBar.style.width=pct+'%';
+window.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  cursor.style.left = mouseX + 'px';
+  cursor.style.top = mouseY + 'px';
 });
 
-/* === NAVBAR === */
-const navbar=document.getElementById('navbar');
-window.addEventListener('scroll',()=>{
-  navbar.style.background=window.scrollY>50?'rgba(10,13,18,0.95)':'rgba(10,13,18,0.75)';
+// Smooth follower logic
+gsap.ticker.add(() => {
+  followerX += (mouseX - followerX) * 0.15;
+  followerY += (mouseY - followerY) * 0.15;
+  follower.style.left = followerX + 'px';
+  follower.style.top = followerY + 'px';
 });
 
-/* === HAMBURGER === */
-const hamburger=document.getElementById('hamburger');
-const navLinks=document.querySelector('.nav-links');
-hamburger.addEventListener('click',()=>navLinks.classList.toggle('open'));
-navLinks.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>navLinks.classList.remove('open')));
+// Hover states for cursor
+document.querySelectorAll('.hover-target').forEach(el => {
+  el.addEventListener('mouseenter', () => document.body.classList.add('hover-active'));
+  el.addEventListener('mouseleave', () => document.body.classList.remove('hover-active'));
+});
 
-/* === SCROLL REVEAL WITH STAGGER === */
-const revealObserver=new IntersectionObserver((entries)=>{
-  entries.forEach((entry,i)=>{
-    if(entry.isIntersecting){
-      setTimeout(()=>entry.target.classList.add('visible'), i*80);
-      revealObserver.unobserve(entry.target);
-    }
-  });
-},{threshold:0.08, rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.timeline-item,.flagship,.project-card,.achievement-card').forEach(el=>revealObserver.observe(el));
+/* === THREE.JS POINT CLOUD === */
+const canvas = document.getElementById('webgl-canvas');
+const scene = new THREE.Scene();
+scene.fog = new THREE.FogExp2(0x050608, 0.0015);
 
-/* === COUNTER ANIMATION === */
-function animateCounters(){
-  document.querySelectorAll('[data-target]').forEach(el=>{
-    const target=parseFloat(el.getAttribute('data-target'));
-    const isFloat=String(target).includes('.');
-    const duration=1200;
-    const start=performance.now();
-    function tick(now){
-      const elapsed=now-start;
-      const progress=Math.min(elapsed/duration,1);
-      const eased=1-Math.pow(1-progress,3);
-      const val=eased*target;
-      el.textContent=isFloat?val.toFixed(2):Math.round(val);
-      if(progress<1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.z = 300;
+
+const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+// Create Particle System
+const particlesGeometry = new THREE.BufferGeometry();
+const particlesCount = 3500;
+const posArray = new Float32Array(particlesCount * 3);
+const colorsArray = new Float32Array(particlesCount * 3);
+
+const colorBase = new THREE.Color('#d4a855');
+const colorAlt = new THREE.Color('#ffffff');
+
+for(let i = 0; i < particlesCount * 3; i+=3) {
+  // Sphere distribution
+  const r = 400 * Math.cbrt(Math.random());
+  const theta = Math.random() * 2 * Math.PI;
+  const phi = Math.acos(2 * Math.random() - 1);
+  
+  posArray[i] = r * Math.sin(phi) * Math.cos(theta);
+  posArray[i+1] = r * Math.sin(phi) * Math.sin(theta);
+  posArray[i+2] = r * Math.cos(phi);
+
+  const mixedColor = Math.random() > 0.8 ? colorAlt : colorBase;
+  colorsArray[i] = mixedColor.r;
+  colorsArray[i+1] = mixedColor.g;
+  colorsArray[i+2] = mixedColor.b;
+}
+
+particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colorsArray, 3));
+
+// Custom Shader Material for glowing dots
+const particlesMaterial = new THREE.PointsMaterial({
+  size: 2.5,
+  vertexColors: true,
+  transparent: true,
+  opacity: 0.8,
+  blending: THREE.AdditiveBlending
+});
+
+const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+scene.add(particlesMesh);
+
+// Mouse interaction for 3D scene
+let targetX = 0;
+let targetY = 0;
+window.addEventListener('mousemove', (e) => {
+  targetX = (e.clientX / window.innerWidth - 0.5) * 2;
+  targetY = (e.clientY / window.innerHeight - 0.5) * 2;
+});
+
+// Resize handler
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+// Animation Loop
+const clock = new THREE.Clock();
+function animate() {
+  const elapsedTime = clock.getElapsedTime();
+  
+  // Slowly rotate the entire cloud
+  particlesMesh.rotation.y = elapsedTime * 0.05;
+  particlesMesh.rotation.x = Math.sin(elapsedTime * 0.1) * 0.1;
+
+  // Camera parallax based on mouse
+  camera.position.x += (targetX * 50 - camera.position.x) * 0.05;
+  camera.position.y += (-targetY * 50 - camera.position.y) * 0.05;
+  camera.lookAt(scene.position);
+
+  renderer.render(scene, camera);
+  requestAnimationFrame(animate);
+}
+animate();
+
+
+/* === GSAP ANIMATIONS === */
+gsap.registerPlugin(ScrollTrigger);
+
+// Utility to split text into spans
+function splitText(selector, type = 'chars') {
+  document.querySelectorAll(selector).forEach(el => {
+    const text = el.innerText;
+    el.innerHTML = '';
+    const arr = type === 'words' ? text.split(' ') : text.split('');
+    arr.forEach(char => {
+      if(char === ' ' && type === 'chars') char = '&nbsp;';
+      const span = document.createElement('span');
+      span.innerHTML = char === ' ' && type === 'words' ? '&nbsp;' : (char + (type==='words'?' ':''));
+      el.appendChild(span);
+    });
   });
 }
-const heroObserver=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{if(e.isIntersecting){animateCounters();heroObserver.unobserve(e.target);}});
-},{threshold:0.5});
-const telemetry=document.querySelector('.telemetry-strip');
-if(telemetry) heroObserver.observe(telemetry);
 
-/* === ACTIVE NAV HIGHLIGHT === */
-const sections=document.querySelectorAll('section[id]');
-const navItems=document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll',()=>{
-  let current='';
-  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-100) current=s.getAttribute('id');});
-  navItems.forEach(l=>{
-    l.classList.remove('active');
-    if(l.getAttribute('href')==='#'+current&&!l.classList.contains('nav-cta')) l.classList.add('active');
-  });
+// Split texts
+splitText('.split-text', 'chars');
+splitText('.split-word', 'words');
+
+// Hero Reveal
+const tl = gsap.timeline();
+tl.fromTo('.hero-eyebrow span', {y: 20, opacity: 0}, {y: 0, opacity: 1, duration: 0.8, stagger: 0.02, ease: 'power3.out', delay: 0.5})
+  .fromTo('.hero-title span', {y: 100, opacity: 0}, {y: 0, opacity: 1, duration: 1, stagger: 0.04, ease: 'expo.out'}, "-=0.6")
+  .fromTo('.hero-stats span', {y: 20, opacity: 0}, {y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: 'power3.out'}, "-=0.8")
+  .fromTo('.scroll-prompt', {opacity: 0}, {opacity: 1, duration: 1}, "-=0.5");
+
+// Mission Text Scroll Reveal
+gsap.fromTo('.mission .massive-text span', 
+  { y: 150, opacity: 0 },
+  {
+    y: 0, opacity: 1, stagger: 0.1, duration: 1, ease: 'expo.out',
+    scrollTrigger: {
+      trigger: '.mission',
+      start: 'top 60%',
+    }
+  }
+);
+gsap.fromTo('.mission-sub span', 
+  { y: 20, opacity: 0 },
+  {
+    y: 0, opacity: 1, stagger: 0.01, duration: 0.5, ease: 'power2.out',
+    scrollTrigger: { trigger: '.mission', start: 'top 40%' }
+  }
+);
+
+// Horizontal Scroll for Experience
+const expTrack = document.querySelector('.exp-track');
+const expPanels = gsap.utils.toArray('.exp-panel');
+
+gsap.to(expTrack, {
+  xPercent: -100 * (expPanels.length - 1),
+  ease: "none",
+  scrollTrigger: {
+    trigger: ".exp-sticky-container",
+    pin: true,
+    scrub: 1,
+    snap: 1 / (expPanels.length - 1),
+    start: "top top",
+    end: () => "+=" + expTrack.offsetWidth
+  }
+});
+
+// Projects Parallax
+gsap.utils.toArray('.proj-card').forEach(card => {
+  gsap.fromTo(card,
+    { y: 100, opacity: 0 },
+    {
+      y: 0, opacity: 1, duration: 1, ease: 'power3.out',
+      scrollTrigger: { trigger: card, start: 'top 85%' }
+    }
+  );
+});
+
+// Three.js Camera Scroll Effect
+gsap.to(camera.position, {
+  z: 100,
+  scrollTrigger: {
+    trigger: "body",
+    start: "top top",
+    end: "bottom bottom",
+    scrub: 1
+  }
 });
